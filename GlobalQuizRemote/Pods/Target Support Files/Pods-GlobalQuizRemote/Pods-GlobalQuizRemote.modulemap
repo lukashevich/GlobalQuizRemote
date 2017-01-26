@@ -1,0 +1,6 @@
+framework module Pods_GlobalQuizRemote {
+  umbrella header "Pods-GlobalQuizRemote-umbrella.h"
+
+  export *
+  module * { export * }
+}

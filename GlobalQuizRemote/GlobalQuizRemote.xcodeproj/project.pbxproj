@@ -1,0 +1,636 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		267CFEFF9B86E5DDB86A9947 /* Pods_GlobalQuizRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6C7183ABAD7EF0B6AE56E50 /* Pods_GlobalQuizRemote.framework */; };
+		7FEDE0BE1E3A330D004943E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEDE0BD1E3A330D004943E4 /* AppDelegate.swift */; };
+		7FEDE0C01E3A330D004943E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEDE0BF1E3A330D004943E4 /* ViewController.swift */; };
+		7FEDE0C31E3A330D004943E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FEDE0C11E3A330D004943E4 /* Main.storyboard */; };
+		7FEDE0C61E3A330D004943E4 /* GlobalQuizRemote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7FEDE0C41E3A330D004943E4 /* GlobalQuizRemote.xcdatamodeld */; };
+		7FEDE0C81E3A330D004943E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FEDE0C71E3A330D004943E4 /* Assets.xcassets */; };
+		7FEDE0CB1E3A330D004943E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FEDE0C91E3A330D004943E4 /* LaunchScreen.storyboard */; };
+		7FEDE0D61E3A330D004943E4 /* GlobalQuizRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEDE0D51E3A330D004943E4 /* GlobalQuizRemoteTests.swift */; };
+		7FEDE0E11E3A330D004943E4 /* GlobalQuizRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEDE0E01E3A330D004943E4 /* GlobalQuizRemoteUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7FEDE0D21E3A330D004943E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FEDE0B21E3A330C004943E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FEDE0B91E3A330D004943E4;
+			remoteInfo = GlobalQuizRemote;
+		};
+		7FEDE0DD1E3A330D004943E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FEDE0B21E3A330C004943E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FEDE0B91E3A330D004943E4;
+			remoteInfo = GlobalQuizRemote;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		079ADA369F33A598B43FE542 /* Pods-GlobalQuizRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalQuizRemote.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlobalQuizRemote/Pods-GlobalQuizRemote.release.xcconfig"; sourceTree = "<group>"; };
+		7FEDE0BA1E3A330D004943E4 /* GlobalQuizRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobalQuizRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FEDE0BD1E3A330D004943E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7FEDE0BF1E3A330D004943E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7FEDE0C21E3A330D004943E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7FEDE0C51E3A330D004943E4 /* GlobalQuizRemote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GlobalQuizRemote.xcdatamodel; sourceTree = "<group>"; };
+		7FEDE0C71E3A330D004943E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7FEDE0CA1E3A330D004943E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7FEDE0CC1E3A330D004943E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FEDE0D11E3A330D004943E4 /* GlobalQuizRemoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlobalQuizRemoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FEDE0D51E3A330D004943E4 /* GlobalQuizRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalQuizRemoteTests.swift; sourceTree = "<group>"; };
+		7FEDE0D71E3A330D004943E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FEDE0DC1E3A330D004943E4 /* GlobalQuizRemoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlobalQuizRemoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FEDE0E01E3A330D004943E4 /* GlobalQuizRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalQuizRemoteUITests.swift; sourceTree = "<group>"; };
+		7FEDE0E21E3A330D004943E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FEDE0EE1E3A3453004943E4 /* BluetoothKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BluetoothKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/GlobalQuizRemote-csfhiunlqrdfcugkbaxsdomegdfu/Build/Products/Debug-iphonesimulator/BluetoothKit/BluetoothKit.framework"; sourceTree = "<group>"; };
+		C6C7183ABAD7EF0B6AE56E50 /* Pods_GlobalQuizRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GlobalQuizRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F91F83044EBBD766FFA285E3 /* Pods-GlobalQuizRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalQuizRemote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GlobalQuizRemote/Pods-GlobalQuizRemote.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7FEDE0B71E3A330D004943E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				267CFEFF9B86E5DDB86A9947 /* Pods_GlobalQuizRemote.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FEDE0CE1E3A330D004943E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FEDE0D91E3A330D004943E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0430BA97B67B08BDCCFE0BA4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F91F83044EBBD766FFA285E3 /* Pods-GlobalQuizRemote.debug.xcconfig */,
+				079ADA369F33A598B43FE542 /* Pods-GlobalQuizRemote.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1C6FCD3672A6345C6723B280 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FEDE0EE1E3A3453004943E4 /* BluetoothKit.framework */,
+				C6C7183ABAD7EF0B6AE56E50 /* Pods_GlobalQuizRemote.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7FEDE0B11E3A330C004943E4 = {
+			isa = PBXGroup;
+			children = (
+				7FEDE0BC1E3A330D004943E4 /* GlobalQuizRemote */,
+				7FEDE0D41E3A330D004943E4 /* GlobalQuizRemoteTests */,
+				7FEDE0DF1E3A330D004943E4 /* GlobalQuizRemoteUITests */,
+				7FEDE0BB1E3A330D004943E4 /* Products */,
+				0430BA97B67B08BDCCFE0BA4 /* Pods */,
+				1C6FCD3672A6345C6723B280 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7FEDE0BB1E3A330D004943E4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7FEDE0BA1E3A330D004943E4 /* GlobalQuizRemote.app */,
+				7FEDE0D11E3A330D004943E4 /* GlobalQuizRemoteTests.xctest */,
+				7FEDE0DC1E3A330D004943E4 /* GlobalQuizRemoteUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7FEDE0BC1E3A330D004943E4 /* GlobalQuizRemote */ = {
+			isa = PBXGroup;
+			children = (
+				7FEDE0BD1E3A330D004943E4 /* AppDelegate.swift */,
+				7FEDE0BF1E3A330D004943E4 /* ViewController.swift */,
+				7FEDE0C11E3A330D004943E4 /* Main.storyboard */,
+				7FEDE0C71E3A330D004943E4 /* Assets.xcassets */,
+				7FEDE0C91E3A330D004943E4 /* LaunchScreen.storyboard */,
+				7FEDE0CC1E3A330D004943E4 /* Info.plist */,
+				7FEDE0C41E3A330D004943E4 /* GlobalQuizRemote.xcdatamodeld */,
+			);
+			path = GlobalQuizRemote;
+			sourceTree = "<group>";
+		};
+		7FEDE0D41E3A330D004943E4 /* GlobalQuizRemoteTests */ = {
+			isa = PBXGroup;
+			children = (
+				7FEDE0D51E3A330D004943E4 /* GlobalQuizRemoteTests.swift */,
+				7FEDE0D71E3A330D004943E4 /* Info.plist */,
+			);
+			path = GlobalQuizRemoteTests;
+			sourceTree = "<group>";
+		};
+		7FEDE0DF1E3A330D004943E4 /* GlobalQuizRemoteUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7FEDE0E01E3A330D004943E4 /* GlobalQuizRemoteUITests.swift */,
+				7FEDE0E21E3A330D004943E4 /* Info.plist */,
+			);
+			path = GlobalQuizRemoteUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7FEDE0B91E3A330D004943E4 /* GlobalQuizRemote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FEDE0E51E3A330D004943E4 /* Build configuration list for PBXNativeTarget "GlobalQuizRemote" */;
+			buildPhases = (
+				15C1FCDADD944ED70D0897BA /* [CP] Check Pods Manifest.lock */,
+				7FEDE0B61E3A330D004943E4 /* Sources */,
+				7FEDE0B71E3A330D004943E4 /* Frameworks */,
+				7FEDE0B81E3A330D004943E4 /* Resources */,
+				8A24B09347790C40271C7F50 /* [CP] Embed Pods Frameworks */,
+				03BD56BE6CEA26EAA2D35F50 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GlobalQuizRemote;
+			productName = GlobalQuizRemote;
+			productReference = 7FEDE0BA1E3A330D004943E4 /* GlobalQuizRemote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7FEDE0D01E3A330D004943E4 /* GlobalQuizRemoteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FEDE0E81E3A330D004943E4 /* Build configuration list for PBXNativeTarget "GlobalQuizRemoteTests" */;
+			buildPhases = (
+				7FEDE0CD1E3A330D004943E4 /* Sources */,
+				7FEDE0CE1E3A330D004943E4 /* Frameworks */,
+				7FEDE0CF1E3A330D004943E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7FEDE0D31E3A330D004943E4 /* PBXTargetDependency */,
+			);
+			name = GlobalQuizRemoteTests;
+			productName = GlobalQuizRemoteTests;
+			productReference = 7FEDE0D11E3A330D004943E4 /* GlobalQuizRemoteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7FEDE0DB1E3A330D004943E4 /* GlobalQuizRemoteUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FEDE0EB1E3A330D004943E4 /* Build configuration list for PBXNativeTarget "GlobalQuizRemoteUITests" */;
+			buildPhases = (
+				7FEDE0D81E3A330D004943E4 /* Sources */,
+				7FEDE0D91E3A330D004943E4 /* Frameworks */,
+				7FEDE0DA1E3A330D004943E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7FEDE0DE1E3A330D004943E4 /* PBXTargetDependency */,
+			);
+			name = GlobalQuizRemoteUITests;
+			productName = GlobalQuizRemoteUITests;
+			productReference = 7FEDE0DC1E3A330D004943E4 /* GlobalQuizRemoteUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7FEDE0B21E3A330C004943E4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Alexander Lukashevich ";
+				TargetAttributes = {
+					7FEDE0B91E3A330D004943E4 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = SZZH8KK7M7;
+						ProvisioningStyle = Automatic;
+					};
+					7FEDE0D01E3A330D004943E4 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = SZZH8KK7M7;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7FEDE0B91E3A330D004943E4;
+					};
+					7FEDE0DB1E3A330D004943E4 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = SZZH8KK7M7;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7FEDE0B91E3A330D004943E4;
+					};
+				};
+			};
+			buildConfigurationList = 7FEDE0B51E3A330C004943E4 /* Build configuration list for PBXProject "GlobalQuizRemote" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7FEDE0B11E3A330C004943E4;
+			productRefGroup = 7FEDE0BB1E3A330D004943E4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7FEDE0B91E3A330D004943E4 /* GlobalQuizRemote */,
+				7FEDE0D01E3A330D004943E4 /* GlobalQuizRemoteTests */,
+				7FEDE0DB1E3A330D004943E4 /* GlobalQuizRemoteUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7FEDE0B81E3A330D004943E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FEDE0CB1E3A330D004943E4 /* LaunchScreen.storyboard in Resources */,
+				7FEDE0C81E3A330D004943E4 /* Assets.xcassets in Resources */,
+				7FEDE0C31E3A330D004943E4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FEDE0CF1E3A330D004943E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FEDE0DA1E3A330D004943E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03BD56BE6CEA26EAA2D35F50 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GlobalQuizRemote/Pods-GlobalQuizRemote-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		15C1FCDADD944ED70D0897BA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8A24B09347790C40271C7F50 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GlobalQuizRemote/Pods-GlobalQuizRemote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7FEDE0B61E3A330D004943E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FEDE0C01E3A330D004943E4 /* ViewController.swift in Sources */,
+				7FEDE0C61E3A330D004943E4 /* GlobalQuizRemote.xcdatamodeld in Sources */,
+				7FEDE0BE1E3A330D004943E4 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FEDE0CD1E3A330D004943E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FEDE0D61E3A330D004943E4 /* GlobalQuizRemoteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FEDE0D81E3A330D004943E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FEDE0E11E3A330D004943E4 /* GlobalQuizRemoteUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7FEDE0D31E3A330D004943E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FEDE0B91E3A330D004943E4 /* GlobalQuizRemote */;
+			targetProxy = 7FEDE0D21E3A330D004943E4 /* PBXContainerItemProxy */;
+		};
+		7FEDE0DE1E3A330D004943E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FEDE0B91E3A330D004943E4 /* GlobalQuizRemote */;
+			targetProxy = 7FEDE0DD1E3A330D004943E4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7FEDE0C11E3A330D004943E4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7FEDE0C21E3A330D004943E4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7FEDE0C91E3A330D004943E4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7FEDE0CA1E3A330D004943E4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7FEDE0E31E3A330D004943E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7FEDE0E41E3A330D004943E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7FEDE0E61E3A330D004943E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F91F83044EBBD766FFA285E3 /* Pods-GlobalQuizRemote.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SZZH8KK7M7;
+				INFOPLIST_FILE = GlobalQuizRemote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.od.vany.quiz.GlobalQuizRemote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7FEDE0E71E3A330D004943E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 079ADA369F33A598B43FE542 /* Pods-GlobalQuizRemote.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SZZH8KK7M7;
+				INFOPLIST_FILE = GlobalQuizRemote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.od.vany.quiz.GlobalQuizRemote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		7FEDE0E91E3A330D004943E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = SZZH8KK7M7;
+				INFOPLIST_FILE = GlobalQuizRemoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.od.vany.quiz.GlobalQuizRemoteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GlobalQuizRemote.app/GlobalQuizRemote";
+			};
+			name = Debug;
+		};
+		7FEDE0EA1E3A330D004943E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = SZZH8KK7M7;
+				INFOPLIST_FILE = GlobalQuizRemoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.od.vany.quiz.GlobalQuizRemoteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GlobalQuizRemote.app/GlobalQuizRemote";
+			};
+			name = Release;
+		};
+		7FEDE0EC1E3A330D004943E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = SZZH8KK7M7;
+				INFOPLIST_FILE = GlobalQuizRemoteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.od.vany.quiz.GlobalQuizRemoteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = GlobalQuizRemote;
+			};
+			name = Debug;
+		};
+		7FEDE0ED1E3A330D004943E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = SZZH8KK7M7;
+				INFOPLIST_FILE = GlobalQuizRemoteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.od.vany.quiz.GlobalQuizRemoteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = GlobalQuizRemote;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7FEDE0B51E3A330C004943E4 /* Build configuration list for PBXProject "GlobalQuizRemote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FEDE0E31E3A330D004943E4 /* Debug */,
+				7FEDE0E41E3A330D004943E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FEDE0E51E3A330D004943E4 /* Build configuration list for PBXNativeTarget "GlobalQuizRemote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FEDE0E61E3A330D004943E4 /* Debug */,
+				7FEDE0E71E3A330D004943E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FEDE0E81E3A330D004943E4 /* Build configuration list for PBXNativeTarget "GlobalQuizRemoteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FEDE0E91E3A330D004943E4 /* Debug */,
+				7FEDE0EA1E3A330D004943E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FEDE0EB1E3A330D004943E4 /* Build configuration list for PBXNativeTarget "GlobalQuizRemoteUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FEDE0EC1E3A330D004943E4 /* Debug */,
+				7FEDE0ED1E3A330D004943E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7FEDE0C41E3A330D004943E4 /* GlobalQuizRemote.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7FEDE0C51E3A330D004943E4 /* GlobalQuizRemote.xcdatamodel */,
+			);
+			currentVersion = 7FEDE0C51E3A330D004943E4 /* GlobalQuizRemote.xcdatamodel */;
+			path = GlobalQuizRemote.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 7FEDE0B21E3A330C004943E4 /* Project object */;
+}
