@@ -1,0 +1,2 @@
+# GlobalQuizRemote
+Remote App
