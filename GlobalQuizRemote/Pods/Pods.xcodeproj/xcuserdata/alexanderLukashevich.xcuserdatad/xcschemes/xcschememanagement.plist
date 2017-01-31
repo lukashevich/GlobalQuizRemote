@@ -14,15 +14,35 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RxBluetoothKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1A952D5C992CC032CF8419D1877AC8A4</key>
+		<key>62BA0D8E0ACFA09BF18EEFED0F792879</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>98ACD77AD60D23FF4567259A6202BBFD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9EC3873894BF0E26F611801F6F737B05</key>
 		<dict>
 			<key>primary</key>
 			<true/>

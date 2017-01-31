@@ -7,15 +7,19 @@
 //
 
 import UIKit
+
 import CoreBluetooth
 import Alamofire
 
-class ViewController: UIViewController,CBCentralManagerDelegate,
-CBPeripheralDelegate {
+class ViewController: UIViewController ,CBCentralManagerDelegate, CBPeripheralDelegate {
 
-  var manager:CBCentralManager!
-  var peripheral:CBPeripheral!
+  var centralManager:CBCentralManager?
+  var discoveredPeripheral:CBPeripheral?
+  var data:NSMutableData?
+//  var manager:CBCentralManager!
+//  var peripheral:CBPeripheral!
   let serverName = "http://quiz.vany.od.ua/wp-json/quiz"
+
   //  let serverName = "http://quiz.vany.od.ua"
 
 //  quiz.vany.od.ua/wp-json/quiz/test
@@ -34,12 +38,58 @@ CBPeripheralDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    manager = CBCentralManager(delegate: self, queue: nil)
-  }
 
+    centralManager = CBCentralManager.init(delegate: self, queue: nil)
+    data = NSMutableData()
+    
+    }
+
+  func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    
+    if #available(iOS 10.0, *) {
+      switch central.state{
+      case CBManagerState.unauthorized:
+        print("This app is not authorised to use Bluetooth low energy")
+      case CBManagerState.poweredOff:
+        print("Bluetooth is currently powered off.")
+      case CBManagerState.poweredOn:
+        print("Bluetooth is currently powered on and available to use.")
+        centralManager?.scanForPeripherals(withServices: [BEAN_SERVICE_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey:true])
+      default:break
+      }
+    } else {
+      
+      // Fallback on earlier versions
+      switch central.state as! CBCentralManagerState {
+      case CBCentralManagerState.unauthorized:
+        print("This app is not authorised to use Bluetooth low energy")
+      case CBCentralManagerState.poweredOff:
+        print("Bluetooth is currently powered off.")
+      case CBCentralManagerState.poweredOn:
+        print("Bluetooth is currently powered on and available to use.")
+        centralManager?.scanForPeripherals(withServices: [BEAN_SERVICE_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey:true])
+      default:break
+      }
+    }
+  }
+  
+  func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    print("DIscovered ")
+    print(peripheral.name ?? "NOTHING")
+    print(RSSI)
+    
+    if discoveredPeripheral != peripheral {
+      discoveredPeripheral = peripheral
+      print("Connecting ")
+      centralManager?.connect(peripheral, options: nil)
+
+    }
+
+  }
   
   func requestToServer(methodName:String){
    
+    
     let serverMethodName = methodName
     
     let requestStr = serverName + "/" + serverMethodName + "/"
@@ -72,81 +122,49 @@ CBPeripheralDelegate {
   }
 
 
-  func centralManagerDidUpdateState(_ central: CBCentralManager){
-    switch (central.state) {
-    case CBManagerState.poweredOff:
-      print("BLE powered off")
-//      self.clearDevices()
-      
-    case CBManagerState.unauthorized:
-      // Indicate to user that the iOS device does not support BLE.
-      print("BLE not supported")
-      break
-      
-    case CBManagerState.unknown:
-      // Wait for another event
-      print("BLE unknown event")
-      break
-      
-    case CBManagerState.poweredOn:
-      print("BLE powered on")
-      self.startScanning()
-      break
-      
-    case CBManagerState.resetting:
-      print("BLE reset")
-//      self.clearDevices()
-      
-    case CBManagerState.unsupported:
-      print("BLE unsupported event")
-      break
+  func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+    for service:CBService in peripheral.services! {
+      peripheral.discoverCharacteristics([BEAN_SERVICE_UUID], for: service)
     }
   }
   
-  func startScanning() {
-    print("\(NSDate()) Start scanning...")
-    
-      _ = [CBCentralManagerScanOptionAllowDuplicatesKey : true]
-      let ble = [CBUUID(string: "B737D0FF-AF53-9B83-E5D2-922140A9FFFF")]
-      manager.scanForPeripherals(withServices: ble, options: nil)
-  }
-  
-  private func centralManager(
-    central: CBCentralManager,
-    didDiscoverPeripheral peripheral: CBPeripheral,
-    advertisementData: [String : AnyObject],
-    RSSI: NSNumber) {
-    let device = (advertisementData as NSDictionary)
-      .object(forKey: CBAdvertisementDataLocalNameKey)
-      as? NSString
-    
-    if device?.contains(BEAN_NAME) == true {
-      self.manager.stopScan()
-      
-      self.peripheral = peripheral
-      self.peripheral.delegate = self
-      
-      manager.connect(peripheral, options: nil)
-    }
-  }
-  
-  func peripheral(
-    _ peripheral: CBPeripheral,
-    didDiscoverCharacteristicsFor service: CBService,
-    error: Error?) {
-    for characteristic in service.characteristics! {
-      let thisCharacteristic = characteristic as CBCharacteristic
-      
-      if thisCharacteristic.uuid == BEAN_SCRATCH_UUID {
-        self.peripheral.setNotifyValue(
-          true,
-          for: thisCharacteristic
-        )
+  func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+    for char:CBCharacteristic in service.characteristics! {
+      if  char.uuid.isEqual(BEAN_SERVICE_UUID) {
+        peripheral.setNotifyValue(true, for: char)
       }
     }
   }
   
+  func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+    
+    let strFromData:NSString = NSString.init(data: data?.copy() as! Data, encoding: String.Encoding.utf8.rawValue)!
+    
+    if strFromData.isEqual("EOM") {
+      
+      peripheral.setNotifyValue(false, for: characteristic)
+      centralManager?.cancelPeripheralConnection(peripheral)
+    }
+    
+    data?.append(characteristic.value!)
+    
+  }
   
+  func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
+    
+    if characteristic.isNotifying {
+      print("Notification begins")
+    } else {
+       centralManager?.cancelPeripheralConnection(peripheral)
+    }
+  }
+  
+  
+  func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+    discoveredPeripheral = nil
+    centralManager?.scanForPeripherals(withServices: [BEAN_SERVICE_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey:true])
+  }
+
   @IBAction func aswerPressed(_ sender: Any) {
     let answerButton:UIButton = sender as! UIButton
     

@@ -1,12 +1,18 @@
 PODS:
   - Alamofire (4.3.0)
+  - RxBluetoothKit (3.0.6):
+    - RxSwift (~> 3.0)
+  - RxSwift (3.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.3)
+  - RxBluetoothKit
 
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  RxBluetoothKit: b01ecd594efc24fde7f803640436d5423aaa7ff5
+  RxSwift: 83ff553e7593fdfdcb2562933a64c0284dffdadc
 
-PODFILE CHECKSUM: 8ae356c932f325d72aeccb66f2aba4b7a7133d7c
+PODFILE CHECKSUM: b946e6ac9e5ea1d53f4492d04c5a784a477acc3c
 
 COCOAPODS: 1.1.1

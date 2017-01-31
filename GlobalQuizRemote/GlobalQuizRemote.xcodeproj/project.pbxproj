@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		267CFEFF9B86E5DDB86A9947 /* Pods_GlobalQuizRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6C7183ABAD7EF0B6AE56E50 /* Pods_GlobalQuizRemote.framework */; };
+		7F4CD5161E408EE0005E7310 /* RxBluetoothKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F4CD5151E408EE0005E7310 /* RxBluetoothKit.framework */; };
+		7F4CD5281E40A51F005E7310 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F4CD5271E40A51F005E7310 /* RxSwift.framework */; };
+		7F4CD52A1E40B009005E7310 /* GQPeripheralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4CD5291E40B009005E7310 /* GQPeripheralViewController.swift */; };
 		7FEDE0BE1E3A330D004943E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEDE0BD1E3A330D004943E4 /* AppDelegate.swift */; };
 		7FEDE0C01E3A330D004943E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEDE0BF1E3A330D004943E4 /* ViewController.swift */; };
 		7FEDE0C31E3A330D004943E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FEDE0C11E3A330D004943E4 /* Main.storyboard */; };
@@ -37,6 +40,9 @@
 
 /* Begin PBXFileReference section */
 		079ADA369F33A598B43FE542 /* Pods-GlobalQuizRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalQuizRemote.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlobalQuizRemote/Pods-GlobalQuizRemote.release.xcconfig"; sourceTree = "<group>"; };
+		7F4CD5151E408EE0005E7310 /* RxBluetoothKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBluetoothKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/GlobalQuizRemote-csfhiunlqrdfcugkbaxsdomegdfu/Build/Products/Debug-iphonesimulator/RxBluetoothKit/RxBluetoothKit.framework"; sourceTree = "<group>"; };
+		7F4CD5271E40A51F005E7310 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../../Library/Developer/Xcode/DerivedData/GlobalQuizRemote-csfhiunlqrdfcugkbaxsdomegdfu/Build/Products/Debug-iphoneos/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
+		7F4CD5291E40B009005E7310 /* GQPeripheralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GQPeripheralViewController.swift; sourceTree = "<group>"; };
 		7FEDE0BA1E3A330D004943E4 /* GlobalQuizRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobalQuizRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEDE0BD1E3A330D004943E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FEDE0BF1E3A330D004943E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F4CD5281E40A51F005E7310 /* RxSwift.framework in Frameworks */,
+				7F4CD5161E408EE0005E7310 /* RxBluetoothKit.framework in Frameworks */,
 				267CFEFF9B86E5DDB86A9947 /* Pods_GlobalQuizRemote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +102,8 @@
 		1C6FCD3672A6345C6723B280 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F4CD5271E40A51F005E7310 /* RxSwift.framework */,
+				7F4CD5151E408EE0005E7310 /* RxBluetoothKit.framework */,
 				7FEDE0EE1E3A3453004943E4 /* BluetoothKit.framework */,
 				C6C7183ABAD7EF0B6AE56E50 /* Pods_GlobalQuizRemote.framework */,
 			);
@@ -132,6 +142,7 @@
 				7FEDE0C91E3A330D004943E4 /* LaunchScreen.storyboard */,
 				7FEDE0CC1E3A330D004943E4 /* Info.plist */,
 				7FEDE0C41E3A330D004943E4 /* GlobalQuizRemote.xcdatamodeld */,
+				7F4CD5291E40B009005E7310 /* GQPeripheralViewController.swift */,
 			);
 			path = GlobalQuizRemote;
 			sourceTree = "<group>";
@@ -342,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F4CD52A1E40B009005E7310 /* GQPeripheralViewController.swift in Sources */,
 				7FEDE0C01E3A330D004943E4 /* ViewController.swift in Sources */,
 				7FEDE0C61E3A330D004943E4 /* GlobalQuizRemote.xcdatamodeld in Sources */,
 				7FEDE0BE1E3A330D004943E4 /* AppDelegate.swift in Sources */,
@@ -439,7 +451,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -483,7 +495,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
