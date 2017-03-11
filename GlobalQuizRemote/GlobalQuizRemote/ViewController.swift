@@ -87,34 +87,34 @@ class ViewController: UIViewController ,CBCentralManagerDelegate, CBPeripheralDe
 
   }
   
-  func requestToServer(methodName:String){
-   
-    
-    let serverMethodName = methodName
-    
-    let requestStr = serverName + "/" + serverMethodName + "/"
-     print(requestStr)
-    
-    Alamofire.request(requestStr).responseJSON { response in
-      print(response.request ?? "")  // original URL request
-      print("\n")
-      print(response.response ?? "") // HTTP URL response
-      print("\n")
-      print(response.data ?? "")     // server data
-      
-      print("\n")
-      //      print(response.request )   // result of response serialization
-      //
-      if let JSON:[[String:AnyObject]] = response.result.value as? [[String:AnyObject]]{
-
-              print("JSON: \(JSON)")
-            }
-    }
-    
-    
-
-
-  }
+//  func requestToServer(methodName:String){
+//   
+//    
+//    let serverMethodName = methodName
+//    
+//    let requestStr = serverName + "/" + serverMethodName + "/"
+//     print(requestStr)
+//    
+//    Alamofire.request(requestStr).responseJSON { response in
+//      print(response.request ?? "")  // original URL request
+//      print("\n")
+//      print(response.response ?? "") // HTTP URL response
+//      print("\n")
+//      print(response.data ?? "")     // server data
+//      
+//      print("\n")
+//      //      print(response.request )   // result of response serialization
+//      //
+//      if let JSON:[[String:AnyObject]] = response.result.value as? [[String:AnyObject]]{
+//
+//              print("JSON: \(JSON)")
+//            }
+//    }
+//    
+//    
+//
+//
+//  }
   
    override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
@@ -168,7 +168,7 @@ class ViewController: UIViewController ,CBCentralManagerDelegate, CBPeripheralDe
   @IBAction func aswerPressed(_ sender: Any) {
     let answerButton:UIButton = sender as! UIButton
     
-    requestToServer(methodName: "test")
+//    requestToServer(methodName: "test")
     
     switch answerButton {
     case firstAnswer :
