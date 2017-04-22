@@ -195,6 +195,8 @@ class ViewController: UIViewController,BTControllerDelegate {
 
     }
     
+
+    
     peripheralVC?.peripheralManager?.updateValue(answer.data(using:String.Encoding.utf8)!, for: (peripheralVC?.answerChar!)!, onSubscribedCentrals: nil)
 
     
