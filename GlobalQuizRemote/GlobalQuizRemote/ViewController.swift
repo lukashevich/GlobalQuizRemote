@@ -11,8 +11,14 @@ import UIKit
 import CoreBluetooth
 import Alamofire
 
-class ViewController: UIViewController ,CBCentralManagerDelegate, CBPeripheralDelegate {
+protocol BTControllerDelegate: class {
+    func received(action: String)
+}
 
+class ViewController: UIViewController,BTControllerDelegate {
+
+    weak var delegate:CBPeripheralManagerDelegate?
+    var peripheralVC:GQPeripheralViewController?
   var centralManager:CBCentralManager?
   var discoveredPeripheral:CBPeripheral?
   var data:NSMutableData?
@@ -39,53 +45,53 @@ class ViewController: UIViewController ,CBCentralManagerDelegate, CBPeripheralDe
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    centralManager = CBCentralManager.init(delegate: self, queue: nil)
-    data = NSMutableData()
-    
-    }
-
-  func centralManagerDidUpdateState(_ central: CBCentralManager) {
-    
-    if #available(iOS 10.0, *) {
-      switch central.state{
-      case CBManagerState.unauthorized:
-        print("This app is not authorised to use Bluetooth low energy")
-      case CBManagerState.poweredOff:
-        print("Bluetooth is currently powered off.")
-      case CBManagerState.poweredOn:
-        print("Bluetooth is currently powered on and available to use.")
-        centralManager?.scanForPeripherals(withServices: [BEAN_SERVICE_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey:true])
-      default:break
-      }
-    } else {
-      
-      // Fallback on earlier versions
-      switch central.state as! CBCentralManagerState {
-      case CBCentralManagerState.unauthorized:
-        print("This app is not authorised to use Bluetooth low energy")
-      case CBCentralManagerState.poweredOff:
-        print("Bluetooth is currently powered off.")
-      case CBCentralManagerState.poweredOn:
-        print("Bluetooth is currently powered on and available to use.")
-        centralManager?.scanForPeripherals(withServices: [BEAN_SERVICE_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey:true])
-      default:break
-      }
-    }
+//    centralManager = CBCentralManager.init(delegate: self, queue: nil)
+//    data = NSMutableData()
+//    
+//    }
+//
+//  func centralManagerDidUpdateState(_ central: CBCentralManager) {
+//    
+//    if #available(iOS 10.0, *) {
+//      switch central.state{
+//      case CBManagerState.unauthorized:
+//        print("This app is not authorised to use Bluetooth low energy")
+//      case CBManagerState.poweredOff:
+//        print("Bluetooth is currently powered off.")
+//      case CBManagerState.poweredOn:
+//        print("Bluetooth is currently powered on and available to use.")
+//        centralManager?.scanForPeripherals(withServices: [BEAN_SERVICE_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey:true])
+//      default:break
+//      }
+//    } else {
+//      
+//      // Fallback on earlier versions
+//      switch central.state as! CBCentralManagerState {
+//      case CBCentralManagerState.unauthorized:
+//        print("This app is not authorised to use Bluetooth low energy")
+//      case CBCentralManagerState.poweredOff:
+//        print("Bluetooth is currently powered off.")
+//      case CBCentralManagerState.poweredOn:
+//        print("Bluetooth is currently powered on and available to use.")
+//        centralManager?.scanForPeripherals(withServices: [BEAN_SERVICE_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey:true])
+//      default:break
+//      }
+//    }
   }
   
-  func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-    print("DIscovered ")
-    print(peripheral.name ?? "NOTHING")
-    print(RSSI)
-    
-    if discoveredPeripheral != peripheral {
-      discoveredPeripheral = peripheral
-      print("Connecting ")
-      centralManager?.connect(peripheral, options: nil)
-
-    }
-
-  }
+//  func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+//    print("DIscovered ")
+//    print(peripheral.name ?? "NOTHING")
+//    print(RSSI)
+//    
+//    if discoveredPeripheral != peripheral {
+//      discoveredPeripheral = peripheral
+//      print("Connecting ")
+//      centralManager?.connect(peripheral, options: nil)
+//
+//    }
+//
+//  }
   
 //  func requestToServer(methodName:String){
 //   
@@ -122,77 +128,86 @@ class ViewController: UIViewController ,CBCentralManagerDelegate, CBPeripheralDe
   }
 
 
-  func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-    for service:CBService in peripheral.services! {
-      peripheral.discoverCharacteristics([BEAN_SERVICE_UUID], for: service)
-    }
-  }
-  
-  func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-    for char:CBCharacteristic in service.characteristics! {
-      if  char.uuid.isEqual(BEAN_SERVICE_UUID) {
-        peripheral.setNotifyValue(true, for: char)
-      }
-    }
-  }
-  
-  func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-    
-    let strFromData:NSString = NSString.init(data: data?.copy() as! Data, encoding: String.Encoding.utf8.rawValue)!
-    
-    if strFromData.isEqual("EOM") {
-      
-      peripheral.setNotifyValue(false, for: characteristic)
-      centralManager?.cancelPeripheralConnection(peripheral)
-    }
-    
-    data?.append(characteristic.value!)
-    
-  }
-  
-  func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
-    
-    if characteristic.isNotifying {
-      print("Notification begins")
-    } else {
-       centralManager?.cancelPeripheralConnection(peripheral)
-    }
-  }
-  
-  
-  func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-    discoveredPeripheral = nil
-    centralManager?.scanForPeripherals(withServices: [BEAN_SERVICE_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey:true])
-  }
+//  func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+//    for service:CBService in peripheral.services! {
+//      peripheral.discoverCharacteristics([BEAN_SERVICE_UUID], for: service)
+//    }
+//  }
+//  
+//  func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+//    for char:CBCharacteristic in service.characteristics! {
+//      if  char.uuid.isEqual(BEAN_SERVICE_UUID) {
+//        peripheral.setNotifyValue(true, for: char)
+//      }
+//    }
+//  }
+//  
+//  func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+//    
+//    let strFromData:NSString = NSString.init(data: data?.copy() as! Data, encoding: String.Encoding.utf8.rawValue)!
+//    
+//    if strFromData.isEqual("EOM") {
+//      
+//      peripheral.setNotifyValue(false, for: characteristic)
+//      centralManager?.cancelPeripheralConnection(peripheral)
+//    }
+//    
+//    data?.append(characteristic.value!)
+//    
+//  }
+//  
+//  func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
+//    
+//    if characteristic.isNotifying {
+//      print("Notification begins")
+//    } else {
+//       centralManager?.cancelPeripheralConnection(peripheral)
+//    }
+//  }
+//  
+//  
+//  func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+//    discoveredPeripheral = nil
+//    centralManager?.scanForPeripherals(withServices: [BEAN_SERVICE_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey:true])
+//  }
 
   @IBAction func aswerPressed(_ sender: Any) {
     let answerButton:UIButton = sender as! UIButton
     
-//    requestToServer(methodName: "test")
+    var answer:String = ""
     
     switch answerButton {
     case firstAnswer :
-       print("firstAnswer")
+       answer = "firstAnswer"
        break
     case secondAnswer :
-      print("secondAnswer")
+      answer = "secondAnswer"
       break
     case thirdAnswer :
-      print("thirdAnswer")
+       answer = "thirdAnswer"
       break
     case fourthAnswer :
-      print("fourthAnswer")
+      answer = "fourthAnswer"
       break
       
     default:
       print("WTF !?")
 
     }
-   
+    
+    peripheralVC?.peripheralManager?.updateValue(answer.data(using:String.Encoding.utf8)!, for: (peripheralVC?.answerChar!)!, onSubscribedCentrals: nil)
+
+    
     
   }
+    
+    func received(action: String) {
+        
+        
+    }
 
   
 }
+
 
 

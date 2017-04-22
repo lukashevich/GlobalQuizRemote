@@ -9,20 +9,23 @@
 import UIKit
 import CoreBluetooth
 
+
 class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate {
   
   var peripheralManager:CBPeripheralManager?
-  var transferChar:CBMutableCharacteristic?
-    var receiveChar:CBMutableCharacteristic?
+  var enableAnswerChar:CBMutableCharacteristic?
+    var startGameChar:CBMutableCharacteristic?
+    var answerChar:CBMutableCharacteristic?
 
+    var answerController:ViewController?
   var dataToSend:Data?
   var sendDataIndex:Int = 0
-
    
-    let SENDING_DATA_CHAR =
+    let ENABLE_ANSWER_CHAR =
         CBUUID(string: "a495ff20-c5b1-4b44-b512-1370f02d74dd")
-    
-    let RECEIVE_DATA_CHAR =
+    let ANSWER_CHAR =
+        CBUUID(string: "a495ff20-c5b1-4b44-b512-1370f02d74db")
+    let START_GAME_CHAR =
         CBUUID(string: "a495ff20-c5b1-4b44-b512-1370f02d74bb")
     
     let MAIN_SERVICE =
@@ -31,9 +34,11 @@ class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-peripheralManager = CBPeripheralManager.init(delegate: self, queue: nil)
+        answerController = ViewController()
+        answerController?.peripheralVC = self
         
-      peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:MAIN_SERVICE])
+peripheralManager = CBPeripheralManager.init(delegate: self, queue: nil)
+      peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:ANSWER_CHAR])
         
   }
 
@@ -44,16 +49,28 @@ peripheralManager = CBPeripheralManager.init(delegate: self, queue: nil)
   
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
         peripheralManager?.respond(to: requests.first!, withResult:.success)
-        transferChar?.value = requests.first?.value
-        print(transferChar?.value)
-        print(requests)
+        print(NSString(data: (requests.first?.value)!, encoding: String.Encoding.utf8.rawValue) ?? "FUCK")
 
+        if (NSString(data: (requests.first?.value)!, encoding: String.Encoding.utf8.rawValue)?.isEqual(to: "Start"))!{
+            startGameChar?.value = requests.first?.value
+            print("startGameChar")
+            performSegue(withIdentifier: "toPeripheral", sender: self)
+//            navigationController?.pushViewController(answerController!, animated: true)
+        }else if (NSString(data: (enableAnswerChar?.value)!, encoding: String.Encoding.utf8.rawValue)?.isEqual(to: "Start"))!{
+            enableAnswerChar?.value = requests.first?.value
+            answerController?.received(action: NSString(data: (enableAnswerChar?.value)!, encoding: String.Encoding.utf8.rawValue)! as String)
+        }
 //        let dictionary: Dictionary? = NSKeyedUnarchiver.unarchiveObject(with: (requests.first?.value)!) as? [String : Any]
-        print(NSString(data: (transferChar?.value)!, encoding: String.Encoding.utf8.rawValue))
     }
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
         print("readRequest")
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier ==  "toPeripheral" {
+            (segue.destination as! ViewController).peripheralVC = self
+        }
     }
   func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
     
@@ -66,18 +83,28 @@ peripheralManager = CBPeripheralManager.init(delegate: self, queue: nil)
 
         let mainService = CBMutableService.init(type: MAIN_SERVICE, primary: true)
 
-        transferChar = CBMutableCharacteristic.init(type: SENDING_DATA_CHAR, properties: CBCharacteristicProperties.write, value: nil, permissions: CBAttributePermissions.writeable)
+        enableAnswerChar = CBMutableCharacteristic.init(type: ENABLE_ANSWER_CHAR, properties: CBCharacteristicProperties.write, value: nil, permissions: CBAttributePermissions.writeable)
         
-        receiveChar = CBMutableCharacteristic.init(type: RECEIVE_DATA_CHAR, properties: CBCharacteristicProperties.notify, value: nil, permissions: CBAttributePermissions.writeable)
+        startGameChar = CBMutableCharacteristic.init(type: START_GAME_CHAR, properties: CBCharacteristicProperties.notify, value: nil, permissions: CBAttributePermissions.writeable)
 
-        mainService.characteristics = [receiveChar!, transferChar!]
+        answerChar = CBMutableCharacteristic.init(type: ANSWER_CHAR, properties: CBCharacteristicProperties.notify, value: nil, permissions: CBAttributePermissions.readable)
+        mainService.characteristics = [startGameChar!, enableAnswerChar!, answerChar!]
         peripheralManager?.add(mainService)
+        peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:ANSWER_CHAR])
+
 
       }
     } else {
       
     }
   }
+    
+    func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
+        print("service added")
+        print(service.characteristics)
+        print(error.debugDescription)
+
+    }
   
   func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
     print("didSubscribeTo")
