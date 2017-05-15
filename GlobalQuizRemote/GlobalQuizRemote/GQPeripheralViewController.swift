@@ -35,6 +35,7 @@ class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate 
   
   override func viewDidLoad() {
     super.viewDidLoad()
+
     
     answerController = ViewController()
     answerController?.peripheralVC = self
@@ -48,10 +49,17 @@ class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate 
   func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
     peripheralManager?.respond(to: requests.first!, withResult:.success)
     print(NSString(data: (requests.first?.value)!, encoding: String.Encoding.utf8.rawValue) ?? "FUCK")
-    
-    if (NSString(data: (requests.first?.value)!, encoding: String.Encoding.utf8.rawValue)?.isEqual(to: "Start"))!{
+    let split = NSString(data: (requests.first?.value)!, encoding: String.Encoding.utf8.rawValue)?.components(separatedBy: ",")
+    if (split?.first?.isEqual("Start"))!{
       startGameChar?.value = requests.first?.value
       print("startGameChar")
+      print(Int((split?.last)!) ?? "FUCK")
+      print((split?.last)!)
+
+      let userDef:UserDefaults = UserDefaults.standard
+      userDef.set(Int((split?.last)!), forKey: "playerId")
+      userDef.synchronize()
+      
       performSegue(withIdentifier: "toPeripheral", sender: self)
       //            navigationController?.pushViewController(answerController!, animated: true)
     }else if (NSString(data: (enableAnswerChar?.value)!, encoding: String.Encoding.utf8.rawValue)?.isEqual(to: "Start"))!{

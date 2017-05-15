@@ -231,7 +231,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Alexander Lukashevich ";
 				TargetAttributes = {
 					7FEDE0B91E3A330D004943E4 = {
@@ -513,6 +513,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F91F83044EBBD766FFA285E3 /* Pods-GlobalQuizRemote.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SZZH8KK7M7;
 				INFOPLIST_FILE = GlobalQuizRemote/Info.plist;
@@ -528,6 +529,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 079ADA369F33A598B43FE542 /* Pods-GlobalQuizRemote.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SZZH8KK7M7;
 				INFOPLIST_FILE = GlobalQuizRemote/Info.plist;

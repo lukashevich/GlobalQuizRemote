@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AudioToolbox
 import CoreBluetooth
 import Alamofire
 
@@ -174,30 +174,45 @@ class ViewController: UIViewController,BTControllerDelegate {
   @IBAction func aswerPressed(_ sender: Any) {
     let answerButton:UIButton = sender as! UIButton
     
-    var answer:String = ""
-    
-    switch answerButton {
-    case firstAnswer :
-       answer = "firstAnswer"
-       break
-    case secondAnswer :
-      answer = "secondAnswer"
-      break
-    case thirdAnswer :
-       answer = "thirdAnswer"
-      break
-    case fourthAnswer :
-      answer = "fourthAnswer"
-      break
-      
-    default:
-      print("WTF !?")
+    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 
-    }
+//    var answer:String = ""
+//    
+//    switch answerButton {
+//    case firstAnswer :
+//       answer = "firstAnswer"
+//       break
+//    case secondAnswer :
+//      answer = "secondAnswer"
+//      break
+//    case thirdAnswer :
+//       answer = "thirdAnswer"
+//      break
+//    case fourthAnswer :
+//      answer = "fourthAnswer"
+//      break
+//      
+//    default:
+//      print("WTF !?")
+//
+//    }
+
+    let userDef = UserDefaults.standard
     
 
-    
-    peripheralVC?.peripheralManager?.updateValue(answer.data(using:String.Encoding.utf8)!, for: (peripheralVC?.answerChar!)!, onSubscribedCentrals: nil)
+//    let answer:NSMutableDictionary = NSMutableDictionary()
+//    answer.setObject(answerButton.tag, forKey: "answer" as NSCopying)
+//    answer.setObject(Date().timeIntervalSince1970, forKey: "time" as NSCopying)
+//    answer.setObject(userDef.integer(forKey: "id"), forKey: "id" as NSCopying)
+//
+//    let answerData: Data = NSKeyedArchiver.archivedData(withRootObject: answer)
+    let playerId = userDef.integer(forKey: "playerId")//\"id\":\(playerId),
+//    let time  = Date().timeIntervalSince1970//\"time\":\(time),
+    let answer  = answerButton.tag
+
+    let answerData:Data = "\(answer),\(playerId)".data(using: .utf8)!
+    print(answerData.count)
+    peripheralVC?.peripheralManager?.updateValue(answerData, for: (peripheralVC?.answerChar!)!, onSubscribedCentrals: nil)
 
     
     
