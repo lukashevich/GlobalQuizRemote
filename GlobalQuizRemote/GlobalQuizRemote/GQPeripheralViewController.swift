@@ -98,7 +98,7 @@ class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate 
         answerChar = CBMutableCharacteristic.init(type: ANSWER_CHAR, properties: CBCharacteristicProperties.notify, value: nil, permissions: CBAttributePermissions.readable)
         mainService.characteristics = [startGameChar!, enableAnswerChar!, answerChar!]
         peripheralManager?.add(mainService)
-        peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:ANSWER_CHAR])
+        peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:MAIN_SERVICE_1])
         
         
       }
@@ -138,8 +138,7 @@ class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate 
   
   func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
     print("service added")
-    print(service.characteristics)
-    print(error.debugDescription)
+    print(service)
     
   }
   
