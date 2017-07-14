@@ -20,6 +20,34 @@
                ReferencedContainer = "container:GlobalQuizRemote.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7FEDE0D01E3A330D004943E4"
+               BuildableName = "GlobalQuizRemoteTests.xctest"
+               BlueprintName = "GlobalQuizRemoteTests"
+               ReferencedContainer = "container:GlobalQuizRemote.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7FEDE0DB1E3A330D004943E4"
+               BuildableName = "GlobalQuizRemoteUITests.xctest"
+               BlueprintName = "GlobalQuizRemoteUITests"
+               ReferencedContainer = "container:GlobalQuizRemote.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
