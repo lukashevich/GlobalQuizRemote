@@ -212,12 +212,16 @@ class ViewController: UIViewController,BTControllerDelegate {
 
     let answerData:Data = "\(answer),\(playerId)".data(using: .utf8)!
     print(answerData.count)
-    peripheralVC?.peripheralManager?.updateValue(answerData, for: (peripheralVC?.answerChar!)!, onSubscribedCentrals: nil)
-
-    
+    peripheralVC?.peripheralManager?.updateValue(answerData, for: (peripheralVC?.answerChar!)!, onSubscribedCentrals: nil)    
     
   }
+  
+  @IBAction func pausePressed(_ sender: Any) {
     
+    let answerData:Data = "PAUSE".data(using: .utf8)!
+        peripheralVC?.peripheralManager?.updateValue(answerData, for: (peripheralVC?.pauseChar!)!, onSubscribedCentrals: nil)
+    
+  }
     func received(action: String) {
         
         

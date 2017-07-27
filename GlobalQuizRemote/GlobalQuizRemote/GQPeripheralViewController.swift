@@ -16,7 +16,8 @@ class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate 
   var enableAnswerChar:CBMutableCharacteristic?
   var startGameChar:CBMutableCharacteristic?
   var answerChar:CBMutableCharacteristic?
-  
+  var pauseChar:CBMutableCharacteristic?
+
   var answerController:ViewController?
   var dataToSend:Data?
   var sendDataIndex:Int = 0
@@ -28,7 +29,13 @@ class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate 
   let START_GAME_CHAR =
     CBUUID(string: "a495ff20-c5b1-4b44-b512-1370f02d74bb")
   
-  let MAIN_SERVICE_1 =
+  let PAUSE_CHAR =
+  CBUUID(string: "a495ff20-c5b1-4b44-b512-1370f02d74ad")
+  //"259e766c-15c3-4824-80e6-2ecf897cc497"
+  let END_CHAR =
+    CBUUID(string: "6a5d8a8a-718d-4ebf-a86f-85c2375d245f")
+  
+  let MAIN_SERVICE =
     CBUUID(string: "a495ff20-c5b1-4b44-b512-1370f02d74aa")
 //  let MAIN_SERVICE_2 =
 //    CBUUID(string: "a495ff20-c5b1-4b44-b512-1370f02d74ab")
@@ -49,6 +56,7 @@ class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate 
   func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
     peripheralManager?.respond(to: requests.first!, withResult:.success)
     print(NSString(data: (requests.first?.value)!, encoding: String.Encoding.utf8.rawValue) ?? "FUCK")
+    
     let split = NSString(data: (requests.first?.value)!, encoding: String.Encoding.utf8.rawValue)?.components(separatedBy: ",")
     if (split?.first?.isEqual("Start"))!{
       startGameChar?.value = requests.first?.value
@@ -65,9 +73,11 @@ class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate 
     }else if (NSString(data: (enableAnswerChar?.value)!, encoding: String.Encoding.utf8.rawValue)?.isEqual(to: "Start"))!{
       enableAnswerChar?.value = requests.first?.value
       answerController?.received(action: NSString(data: (enableAnswerChar?.value)!, encoding: String.Encoding.utf8.rawValue)! as String)
+    } else if (split?.first?.isEqual("End"))!{
+      answerController?.dismiss(animated: true, completion: nil)
     }
-    //        let dictionary: Dictionary? = NSKeyedUnarchiver.unarchiveObject(with: (requests.first?.value)!) as? [String : Any]
   }
+  
   func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
     print("readRequest")
     
@@ -82,7 +92,7 @@ class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate 
     
     print("peripheralManagerDidUpdateState")
     
-    let mainService = CBMutableService.init(type: MAIN_SERVICE_1, primary: true)
+    let mainService = CBMutableService.init(type: MAIN_SERVICE, primary: true)
 
     
     if #available(iOS 10.0, *) {
@@ -96,9 +106,12 @@ class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate 
         startGameChar = CBMutableCharacteristic.init(type: START_GAME_CHAR, properties: CBCharacteristicProperties.notify, value: nil, permissions: CBAttributePermissions.writeable)
         
         answerChar = CBMutableCharacteristic.init(type: ANSWER_CHAR, properties: CBCharacteristicProperties.notify, value: nil, permissions: CBAttributePermissions.readable)
-        mainService.characteristics = [startGameChar!, enableAnswerChar!, answerChar!]
+        
+        pauseChar = CBMutableCharacteristic.init(type: PAUSE_CHAR, properties: CBCharacteristicProperties.notify, value: nil, permissions: CBAttributePermissions.readable)
+        
+        mainService.characteristics = [startGameChar!, enableAnswerChar!, answerChar!, pauseChar!]
         peripheralManager?.add(mainService)
-        peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:MAIN_SERVICE_1])
+        peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:MAIN_SERVICE])
         
         
       }
@@ -112,9 +125,12 @@ class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate 
         startGameChar = CBMutableCharacteristic.init(type: START_GAME_CHAR, properties: CBCharacteristicProperties.notify, value: nil, permissions: CBAttributePermissions.writeable)
         
         answerChar = CBMutableCharacteristic.init(type: ANSWER_CHAR, properties: CBCharacteristicProperties.notify, value: nil, permissions: CBAttributePermissions.readable)
-        mainService.characteristics = [startGameChar!, enableAnswerChar!, answerChar!]
+        
+        pauseChar = CBMutableCharacteristic.init(type: PAUSE_CHAR, properties: CBCharacteristicProperties.notify, value: nil, permissions: CBAttributePermissions.readable)
+        
+        mainService.characteristics = [startGameChar!, enableAnswerChar!, answerChar!, pauseChar!]
         peripheralManager?.add(mainService)
-        peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:ANSWER_CHAR])
+        peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:MAIN_SERVICE])
         
         break
       case .poweredOff:
@@ -159,5 +175,7 @@ class GQPeripheralViewController: UIViewController, CBPeripheralManagerDelegate 
     sendData()
     
   }
+  
+  
   
 }
